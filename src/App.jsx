@@ -4,7 +4,7 @@ import './App.css'
 function App() {
 const [stream,setStream] = useState(null);
 const [countdown, setCountdown] = useState(null);
-
+const [capturedImage, setCapturedImage] = useState(null);
 const videoRef = useRef(null);
 const canvasRef = useRef(null);
 
@@ -47,7 +47,20 @@ const startCamera = async() => {
 
 const capturePhoto = () => {
   // save photo and show to the UI
-  console.log('photo taken')
+  if(videoRef.current && canvasRef.current) {
+    const canvas = canvasRef.current;
+    const video = videoRef.current;
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    const ctx = canvas.getContext('2d');
+    if(ctx) {
+      ctx.drawImage(video,0,0,canvas.width,canvas.height);
+      const imageDataUrl = canvas.toDataURL('image/png')
+      setCapturedImage(imageDataUrl)
+    }
+  }
 }
 
   return (
@@ -60,6 +73,13 @@ const capturePhoto = () => {
 )}
     countdown: {countdown}
     <canvas ref={canvasRef}></canvas>
+
+    {capturedImage && (
+    <div>
+      <img src={capturedImage} alt="selfie" />
+    </div>
+  
+)}
     </div>
   )
 }
