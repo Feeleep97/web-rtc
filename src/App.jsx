@@ -5,6 +5,8 @@ function App() {
 const [stream,setStream] = useState(null);
 const [countdown, setCountdown] = useState(null);
 const [capturedImage, setCapturedImage] = useState(null);
+const [errorMessage,setErrorMessage] = useState('');
+
 const videoRef = useRef(null);
 const canvasRef = useRef(null);
 
@@ -41,7 +43,11 @@ const startCamera = async() => {
       }
     },1000);
   } catch (error) {
-    console.log(error)
+    if(error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
+      setErrorMessage('Camera permission denied. Please allow camera permissions in order to take a photo.')
+    } else {
+      setErrorMessage(`Error accessing camera:${error.message}`)
+    }
   }
 }
 
@@ -78,8 +84,10 @@ const capturePhoto = () => {
     <div>
       <img src={capturedImage} alt="selfie" />
     </div>
-  
 )}
+    {errorMessage && (
+      <div>Error message: {errorMessage}</div>
+    )}
     </div>
   )
 }
