@@ -70,17 +70,63 @@ useEffect(() => {
 const handleStart = () => setStream(true);
 
   return (
-    <div>
-      <button onClick={handleStart}>Start</button>
-      {stream && (
-        <video ref={videoRef} autoPlay playsInline muted />
+    <div className="camera-container">
+    <div className="camera-wrapper">
+      <h1 className="camera-title">Video Camera</h1>
+
+      <div className="camera-description">
+        <p>
+          Click the button below to allow camera access. A photo will be automatically 
+          taken 5 seconds after you grant permission. The captured image will be displayed 
+          below the video preview.
+        </p>
+      </div>
+
+      <div className="camera-button-wrapper">
+        <button
+          className="camera-btn"
+          onClick={handleStart}
+        >
+          Start
+        </button>
+      </div>
+
+      {errorMessage && (
+        <div className="camera-error">
+          <p className="camera-error-text">{errorMessage}</p>
+        </div>
       )}
-    countdown: {countdown}
-    <canvas ref={canvasRef} />
-    {errorMessage && (
-      <div>Error message: {errorMessage}</div>
-    )}
+
+      {stream && (
+        <div className="camera-video-card">
+          <h2 className="camera-card-title">Live Preview</h2>
+          <div className="camera-video-wrapper">
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              muted
+              className="camera-video"
+            />
+            {countdown !== null && countdown > 0 && (
+              <div className="camera-countdown-overlay">
+                <div className="camera-countdown-number">
+                  {countdown}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {canvasRef && (
+        <div className="camera-gallery">
+          <h2 className="camera-gallery-card-title">Captured Photo</h2>
+          <canvas ref={canvasRef} className="camera-canvas" />
+        </div>
+      )}
     </div>
+  </div>
   )
 }
 
