@@ -1,0 +1,146 @@
+.camera-container {
+  min-height: 100vh;
+  background: #fafafa;
+  padding: 2rem 1rem;
+}
+
+.camera-wrapper {
+  max-width: 600px;
+  margin:0 auto;
+}
+
+.camera-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #3291B6;
+  margin-bottom: 1.5rem;
+}
+
+.camera-description {
+  background: #fff;
+  padding:1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e5e5e5;
+}
+
+.camera-description p { 
+  color: #3291B6;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.camera-button-wrapper {
+  text-align: center;
+  margin-bottom:1.5rem;
+}
+
+.camera-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border:1px solid #3291B6;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff;
+  color: #3291B6;
+  &:hover {
+    background-color: #3291B6;
+    color: #fff;
+  }
+}
+
+.camera-error {
+  background: #fff5f5;
+  border: 1px solid #fefefe;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.camera-error-text {
+  color: #f00;
+  margin: 0;
+}
+
+.camera-video-card, .camera-image-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.camera-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3291B6;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.camera-video-wrapper {
+  position: relative;
+  border-radius:6 px;
+  overflow: hidden;
+  background: #000;
+}
+
+.camera-video {
+  width: 100%;
+  display: block;
+}
+
+.camera-countdown-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.camera-countdown-number {
+  color: #fff;
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+.camera-gallery{
+  width: 100%;
+  max-width: 100%;
+  border-radius: 6px;
+  display: block;
+  margin-bottom:1rem;
+}
+
+.camera-gallery-card-title{
+  color: #3291B6;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+@media(max-width:640px) {
+  .camera-container {
+    padding: 1rem 0.5rem;
+  }
+  .camera-title {
+    font-size: 1.5rem;
+  }
+  .camera-countdown-number {
+    font-size: 3.5rem;
+  } 
+}
+
+.camera-canvas {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 8px;
+}
+
+#gallery-canvas {
+  width: 100%;
+  border-radius: 6px;
+}
