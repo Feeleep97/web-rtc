@@ -4,7 +4,8 @@ import './App.css'
 function App() {
 const [stream,setStream] = useState(null);
 const [countdown, setCountdown] = useState(null);
-const [errorMessage,setErrorMessage] = useState('');
+const [errorMessage, setErrorMessage] = useState('');
+const [capturedPhoto, setCapturedPhoto] = useState(null);
 
 const videoRef = useRef(null);
 const canvasRef = useRef(null);
@@ -20,8 +21,10 @@ const capturePhoto = () => {
     const ctx = canvas.getContext('2d');
     if(ctx) {
       ctx.drawImage(video,0,0,canvas.width,canvas.height);
+      const imageDataURL = canvas.toDataURL('image/png')
       videoRef.current.srcObject.getTracks().forEach(track => track.stop());
       setStream(false);
+      setCapturedPhoto(imageDataURL);
     }
   }
 }
@@ -29,10 +32,12 @@ const capturePhoto = () => {
 useEffect(() => {
   const startCamera = async() => {
     try {
+      setCapturedPhoto(null);
       const mediaStream = await navigator.mediaDevices.getUserMedia({
-        video: {width:1280, height:720},
+        video: {width:800, height:720},
         audio:false
       });
+
       if(videoRef.current) {
         videoRef.current.srcObject = mediaStream;
   
@@ -119,13 +124,17 @@ const handleStart = () => setStream(true);
         </div>
       )}
 
-      {canvasRef && (
+      { capturedPhoto && (
         <div className="camera-gallery">
           <h2 className="camera-gallery-card-title">Captured Photo</h2>
-          <canvas ref={canvasRef} className="camera-canvas" />
+          <div className="camera-canvas"> 
+          <img src={capturedPhoto} className="captured-photo" alt="" />
+          </div>
         </div>
       )}
     </div>
+    <canvas className="hidden" ref={canvasRef} />
+
   </div>
   )
 }
