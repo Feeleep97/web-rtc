@@ -77,22 +77,22 @@ const handleStart = () => setStream(true);
   return (
     <div className="camera-container">
     <div className="camera-wrapper">
-      <h1 className="camera-title">Video Camera</h1>
+      <h1 className="camera-title">Video Capture</h1>
 
       <div className="camera-description">
         <p>
-          Click the button below to allow camera access. A photo will be automatically 
-          taken 5 seconds after you grant permission. The captured image will be displayed 
-          below the video preview.
+        Click the button to allow camera access. A photo will be
+        taken automatically after a few seconds.
         </p>
       </div>
 
       <div className="camera-button-wrapper">
         <button
           className="camera-btn"
+          disabled={countdown !== null && countdown !== 0}
           onClick={handleStart}
         >
-          Start
+          {countdown !== null && countdown !== 0 ? countdown : 'Start'}
         </button>
       </div>
 
@@ -102,7 +102,7 @@ const handleStart = () => setStream(true);
         </div>
       )}
 
-      {stream && (
+      {stream && !errorMessage && (
         <div className="camera-video-card">
           <h2 className="camera-card-title">Live Preview</h2>
           <div className="camera-video-wrapper">
