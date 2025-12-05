@@ -1,16 +1,28 @@
-# React + Vite
+# WebRTC Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Task description: Build a small web application that uses the user’s camera (WebRTC API).
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Request camera with getUserMedia API
+- Automatic countdown that will take a picture 5 secs after the button is clicked
+- Photograph will be shown to the user
+- Error handling if the user doesn't approve permission for camera.
+- Layout is vertical and mobile friendly.
 
-## React Compiler
+Code is located on main branch
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+I am submitting the task with key features implemented. I have focused on quality of the code. There are some areas with potential improvements:
 
-## Expanding the ESLint configuration
+# Potential improvements
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Code decoupling
+
+- Enchanced UI/UX
+
+# Steps to run the project
+
+- clone the repo from main branch
+- run npm install (npm i)
+- npm run dev
+- navigate to -> http://localhost:5173
